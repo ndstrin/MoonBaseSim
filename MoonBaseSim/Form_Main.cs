@@ -49,6 +49,16 @@ namespace MoonBaseSim
         private void UpdateExp() 
         {
             LB_EXP_Value.Text = MoonBase.EXP.ToString();
+            progressBar_EXP.Value = MoonBase.EXP;
+            progressBar_EXP.Maximum = MoonBase.Next_Level_EXP;
+            if (MoonBase.EXP == MoonBase.Next_Level_EXP) 
+            {
+                MoonBase.Level += 1;
+                MoonBase.Total_Workers += 5;
+                MoonBase.EXP = 0;
+                MoonBase.Next_Level_EXP = MoonBase.Next_Level_EXP +200;
+                RefreshBaseValues();
+            }
 
         }
 
@@ -192,5 +202,6 @@ namespace MoonBaseSim
         {
             
         }
+
     }
 }
